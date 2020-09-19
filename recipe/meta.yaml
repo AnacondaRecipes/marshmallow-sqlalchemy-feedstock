@@ -1,6 +1,6 @@
 {% set name = "marshmallow-sqlalchemy" %}
-{% set version = "0.19.0" %}
-{% set sha256 = "b53ae45f6f113ae5433211786129ecb6eaf3646a3a333e769eeb22593b6dbe9c" %}
+{% set version = "0.23.1" %}
+{% set sha256 = "0ef59c8da8da2e18e808e3880158049e9d72f3031c84cc804b6c533a0eb668a9" %}
 
 package:
   name: {{ name|lower }}
@@ -18,12 +18,12 @@ build:
 
 requirements:
   host:
-    - python
+    - python >=3.6
     - pip
   run:
-    - python
-    - marshmallow >=2.0.0
-    - sqlalchemy >=0.9.7
+    - python >=3.6
+    - marshmallow >=2.15.0
+    - sqlalchemy >=1.2.0
 
 test:
   imports:
