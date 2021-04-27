@@ -22,7 +22,7 @@ requirements:
     - pip
   run:
     - python >=3.6
-    - marshmallow >=2.15.0
+    - marshmallow >=3.0.0
     - sqlalchemy >=1.2.0
 
 test:
