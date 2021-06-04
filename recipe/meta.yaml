@@ -20,6 +20,8 @@ requirements:
   host:
     - python >=3.6
     - pip
+    - setuptools
+    - wheel
   run:
     - python >=3.6
     - marshmallow >=3.0.0
@@ -28,6 +30,10 @@ requirements:
 test:
   imports:
     - marshmallow_sqlalchemy
+  requires:
+    - pip
+  commands:
+    - pip check
 
 about:
   home: https://github.com/marshmallow-code/marshmallow-sqlalchemy
