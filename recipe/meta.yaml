@@ -1,6 +1,6 @@
 {% set name = "marshmallow-sqlalchemy" %}
-{% set version = "0.26.0" %}
-{% set sha256 = "cc335437f74427e47a2fdd68f1c2836c60643a001a1fea602ebd4114ce3f75b0" %}
+{% set version = "0.26.1" %}
+{% set sha256 = "d8525f74de51554b5c8491effe036f60629a426229befa33ff614c8569a16a73" %}
 
 package:
   name: {{ name|lower }}
@@ -14,11 +14,12 @@ source:
 build:
   number: 0
   noarch: python
+  skip: True  # [py<36]
   script: python -m pip install --no-deps --ignore-installed .
 
 requirements:
   host:
-    - python >=3.6
+    - python
     - pip
     - setuptools
     - wheel
@@ -32,6 +33,7 @@ test:
     - marshmallow_sqlalchemy
   requires:
     - pip
+    - python <3.10
   commands:
     - pip check
 
