@@ -20,7 +20,7 @@ requirements:
     - pip
     - flit-core <4
   run:
-    - python >=3.6
+    - python
     - marshmallow >=3.18.0
     - sqlalchemy >=1.4.40,<3.0
     - typing-extensions  # [py<310]
