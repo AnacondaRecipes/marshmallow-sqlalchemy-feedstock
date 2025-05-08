@@ -1,41 +1,43 @@
 {% set name = "marshmallow-sqlalchemy" %}
-{% set version = "0.26.1" %}
-{% set sha256 = "d8525f74de51554b5c8491effe036f60629a426229befa33ff614c8569a16a73" %}
+{% set version = "1.4.2" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/marshmallow_sqlalchemy-{{ version }}.tar.gz
+  sha256: 6410304bf98ec26ea35f3f9d3cee82e51fd093c434612add32a0bdcdb5668f7c
 
 build:
   number: 0
-  noarch: python
-  skip: True  # [py<36]
-  script: python -m pip install --no-deps --ignore-installed .
+  skip: True  # [py<39]
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
   host:
     - python
     - pip
-    - setuptools
-    - wheel
+    - flit-core <4
   run:
     - python >=3.6
-    - marshmallow >=3.0.0
-    - sqlalchemy >=1.2.0
+    - marshmallow >=3.18.0
+    - sqlalchemy >=1.4.40,<3.0
+    - typing-extensions  # [py<310]
 
 test:
+  source_files:
+    - tests
   imports:
     - marshmallow_sqlalchemy
   requires:
     - pip
-    - python <3.10
+    - python
+    - pytest
   commands:
     - pip check
+    # skipping test due to not have pytest-lazy-fixtures
+    - pytest -vv tests --ignore="tests/test_sqlalchemy_schema.py"
 
 about:
   home: https://github.com/marshmallow-code/marshmallow-sqlalchemy
