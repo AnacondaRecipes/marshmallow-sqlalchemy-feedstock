@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/marshmallow_sqlalchemy-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_')}}-{{ version }}.tar.gz
   sha256: 6410304bf98ec26ea35f3f9d3cee82e51fd093c434612add32a0bdcdb5668f7c
 
 build:
@@ -48,7 +48,7 @@ about:
 
   description: |
     SQLAlchemy integration with the marshmallow (de)serialization library.
-  doc_url: http://marshmallow-sqlalchemy.readthedocs.io/
+  doc_url: https://marshmallow-sqlalchemy.readthedocs.io/
   dev_url: https://github.com/marshmallow-code/marshmallow-sqlalchemy
 
 extra:
