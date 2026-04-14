@@ -1,5 +1,5 @@
 {% set name = "marshmallow-sqlalchemy" %}
-{% set version = "1.4.2" %}
+{% set version = "1.5.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,11 +7,11 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_')}}-{{ version }}.tar.gz
-  sha256: 6410304bf98ec26ea35f3f9d3cee82e51fd093c434612add32a0bdcdb5668f7c
+  sha256: e51192c204770645a2fab0d72f44f8789272eef75951f84b1608d6b4b0bfe0e6
 
 build:
   number: 0
-  skip: True  # [py<39]
+  skip: true  # [py<39]
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
@@ -44,8 +44,7 @@ about:
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: 'SQLAlchemy integration with marshmallow'
-
+  summary: SQLAlchemy integration with marshmallow
   description: |
     SQLAlchemy integration with the marshmallow (de)serialization library.
   doc_url: https://marshmallow-sqlalchemy.readthedocs.io/
